@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuPolicyMainMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuPolicyMain" >
+    <id column="business_no" property="businessNo" jdbcType="VARCHAR" />
+    <result column="proposal_no" property="proposalNo" jdbcType="VARCHAR" />
+    <result column="policy_no" property="policyNo" jdbcType="VARCHAR" />
+    <result column="insured_code" property="insuredCode" jdbcType="VARCHAR" />
+    <result column="insure_appli" property="insureAppli" jdbcType="VARCHAR" />
+    <result column="risk_code" property="riskCode" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="premium" property="premium" jdbcType="DECIMAL" />
+    <result column="rate" property="rate" jdbcType="DECIMAL" />
+    <result column="excess" property="excess" jdbcType="DECIMAL" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="insurance_code" property="insuranceCode" jdbcType="VARCHAR" />
+    <result column="dispute_type" property="disputeType" jdbcType="VARCHAR" />
+    <result column="arbitration_commision" property="arbitrationCommision" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="letter_id" property="letterId" jdbcType="VARCHAR" />
+    <result column="contract_id" property="contractId" jdbcType="VARCHAR" />
+    <result column="insurance_path" property="insurancePath" jdbcType="VARCHAR" />
+    <result column="broker" property="broker" jdbcType="VARCHAR" />
+    <result column="beneficiary" property="beneficiary" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="record_address" property="recordAddress" jdbcType="VARCHAR" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    business_no, proposal_no, policy_no, insured_code, insure_appli, risk_code, amount, 
+    premium, rate, excess, start_date, end_date, insurance_code, dispute_type, arbitration_commision, 
+    status, letter_id, contract_id, insurance_path, broker, beneficiary, input_time, 
+    record_address, updator, update_time, remark, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from gupolicymain
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from gupolicymain
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuPolicyMain" >
+    insert into gupolicymain (business_no, proposal_no, policy_no, 
+      insured_code, insure_appli, risk_code, 
+      amount, premium, rate, 
+      excess, start_date, end_date, 
+      insurance_code, dispute_type, arbitration_commision, 
+      status, letter_id, contract_id, 
+      insurance_path, broker, beneficiary, 
+      input_time, record_address, updator, 
+      update_time, remark, flag
+      )
+    values (#{businessNo,jdbcType=VARCHAR}, #{proposalNo,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, 
+      #{insuredCode,jdbcType=VARCHAR}, #{insureAppli,jdbcType=VARCHAR}, #{riskCode,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{premium,jdbcType=DECIMAL}, #{rate,jdbcType=DECIMAL}, 
+      #{excess,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{insuranceCode,jdbcType=VARCHAR}, #{disputeType,jdbcType=VARCHAR}, #{arbitrationCommision,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{letterId,jdbcType=VARCHAR}, #{contractId,jdbcType=VARCHAR}, 
+      #{insurancePath,jdbcType=VARCHAR}, #{broker,jdbcType=VARCHAR}, #{beneficiary,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=TIMESTAMP}, #{recordAddress,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuPolicyMain" >
+    insert into gupolicymain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        business_no,
+      </if>
+      <if test="proposalNo != null" >
+        proposal_no,
+      </if>
+      <if test="policyNo != null" >
+        policy_no,
+      </if>
+      <if test="insuredCode != null" >
+        insured_code,
+      </if>
+      <if test="insureAppli != null" >
+        insure_appli,
+      </if>
+      <if test="riskCode != null" >
+        risk_code,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="premium != null" >
+        premium,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="excess != null" >
+        excess,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="insuranceCode != null" >
+        insurance_code,
+      </if>
+      <if test="disputeType != null" >
+        dispute_type,
+      </if>
+      <if test="arbitrationCommision != null" >
+        arbitration_commision,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="letterId != null" >
+        letter_id,
+      </if>
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="insurancePath != null" >
+        insurance_path,
+      </if>
+      <if test="broker != null" >
+        broker,
+      </if>
+      <if test="beneficiary != null" >
+        beneficiary,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="recordAddress != null" >
+        record_address,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="proposalNo != null" >
+        #{proposalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureAppli != null" >
+        #{insureAppli,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="premium != null" >
+        #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="excess != null" >
+        #{excess,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuranceCode != null" >
+        #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeType != null" >
+        #{disputeType,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitrationCommision != null" >
+        #{arbitrationCommision,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="letterId != null" >
+        #{letterId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null" >
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancePath != null" >
+        #{insurancePath,jdbcType=VARCHAR},
+      </if>
+      <if test="broker != null" >
+        #{broker,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficiary != null" >
+        #{beneficiary,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordAddress != null" >
+        #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuPolicyMain" >
+    update gupolicymain
+    <set >
+      <if test="proposalNo != null" >
+        proposal_no = #{proposalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null" >
+        policy_no = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        insured_code = #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insureAppli != null" >
+        insure_appli = #{insureAppli,jdbcType=VARCHAR},
+      </if>
+      <if test="riskCode != null" >
+        risk_code = #{riskCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="premium != null" >
+        premium = #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="excess != null" >
+        excess = #{excess,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insuranceCode != null" >
+        insurance_code = #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeType != null" >
+        dispute_type = #{disputeType,jdbcType=VARCHAR},
+      </if>
+      <if test="arbitrationCommision != null" >
+        arbitration_commision = #{arbitrationCommision,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="letterId != null" >
+        letter_id = #{letterId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null" >
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancePath != null" >
+        insurance_path = #{insurancePath,jdbcType=VARCHAR},
+      </if>
+      <if test="broker != null" >
+        broker = #{broker,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficiary != null" >
+        beneficiary = #{beneficiary,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordAddress != null" >
+        record_address = #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuPolicyMain" >
+    update gupolicymain
+    set proposal_no = #{proposalNo,jdbcType=VARCHAR},
+      policy_no = #{policyNo,jdbcType=VARCHAR},
+      insured_code = #{insuredCode,jdbcType=VARCHAR},
+      insure_appli = #{insureAppli,jdbcType=VARCHAR},
+      risk_code = #{riskCode,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      premium = #{premium,jdbcType=DECIMAL},
+      rate = #{rate,jdbcType=DECIMAL},
+      excess = #{excess,jdbcType=DECIMAL},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      insurance_code = #{insuranceCode,jdbcType=VARCHAR},
+      dispute_type = #{disputeType,jdbcType=VARCHAR},
+      arbitration_commision = #{arbitrationCommision,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      letter_id = #{letterId,jdbcType=VARCHAR},
+      contract_id = #{contractId,jdbcType=VARCHAR},
+      insurance_path = #{insurancePath,jdbcType=VARCHAR},
+      broker = #{broker,jdbcType=VARCHAR},
+      beneficiary = #{beneficiary,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      record_address = #{recordAddress,jdbcType=VARCHAR},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgCreditMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgCredit" >
+    <id column="credit_id" property="creditId" jdbcType="VARCHAR" />
+    <result column="be_crediter" property="beCrediter" jdbcType="VARCHAR" />
+    <result column="credit_level" property="creditLevel" jdbcType="VARCHAR" />
+    <result column="crediter" property="crediter" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="credit_amount" property="creditAmount" jdbcType="DECIMAL" />
+    <result column="credit_file" property="creditFile" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    credit_id, be_crediter, credit_level, crediter, start_date, end_date, credit_amount, 
+    credit_file, input_time, remark, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggcredit
+    where credit_id = #{creditId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggcredit
+    where credit_id = #{creditId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgCredit" >
+    insert into ggcredit (credit_id, be_crediter, credit_level, 
+      crediter, start_date, end_date, 
+      credit_amount, credit_file, input_time, 
+      remark, flag)
+    values (#{creditId,jdbcType=VARCHAR}, #{beCrediter,jdbcType=VARCHAR}, #{creditLevel,jdbcType=VARCHAR}, 
+      #{crediter,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
+      #{creditAmount,jdbcType=DECIMAL}, #{creditFile,jdbcType=VARCHAR}, #{inputTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgCredit" >
+    insert into ggcredit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="creditId != null" >
+        credit_id,
+      </if>
+      <if test="beCrediter != null" >
+        be_crediter,
+      </if>
+      <if test="creditLevel != null" >
+        credit_level,
+      </if>
+      <if test="crediter != null" >
+        crediter,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="creditAmount != null" >
+        credit_amount,
+      </if>
+      <if test="creditFile != null" >
+        credit_file,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="creditId != null" >
+        #{creditId,jdbcType=VARCHAR},
+      </if>
+      <if test="beCrediter != null" >
+        #{beCrediter,jdbcType=VARCHAR},
+      </if>
+      <if test="creditLevel != null" >
+        #{creditLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="crediter != null" >
+        #{crediter,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creditAmount != null" >
+        #{creditAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditFile != null" >
+        #{creditFile,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgCredit" >
+    update ggcredit
+    <set >
+      <if test="beCrediter != null" >
+        be_crediter = #{beCrediter,jdbcType=VARCHAR},
+      </if>
+      <if test="creditLevel != null" >
+        credit_level = #{creditLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="crediter != null" >
+        crediter = #{crediter,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creditAmount != null" >
+        credit_amount = #{creditAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditFile != null" >
+        credit_file = #{creditFile,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where credit_id = #{creditId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgCredit" >
+    update ggcredit
+    set be_crediter = #{beCrediter,jdbcType=VARCHAR},
+      credit_level = #{creditLevel,jdbcType=VARCHAR},
+      crediter = #{crediter,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      credit_amount = #{creditAmount,jdbcType=DECIMAL},
+      credit_file = #{creditFile,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where credit_id = #{creditId,jdbcType=VARCHAR}
+  </update>
+</mapper>

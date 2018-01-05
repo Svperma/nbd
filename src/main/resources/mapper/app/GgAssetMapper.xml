@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgAssetMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgAsset" >
+    <id column="asset_id" property="assetId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="asset_type" property="assetType" jdbcType="VARCHAR" />
+    <result column="asset_holder" property="assetHolder" jdbcType="VARCHAR" />
+    <result column="asset_nature" property="assetNature" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="town" property="town" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="link_type" property="linkType" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="DECIMAL" />
+    <result column="future_price" property="futurePrice" jdbcType="DECIMAL" />
+    <result column="mortgage_amount" property="mortgageAmount" jdbcType="DECIMAL" />
+    <result column="net_worth" property="netWorth" jdbcType="DECIMAL" />
+    <result column="mortgage_bank" property="mortgageBank" jdbcType="VARCHAR" />
+    <result column="asset_img" property="assetImg" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="valid_status" property="validStatus" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    asset_id, user_id, asset_type, asset_holder, asset_nature, province, city, county, 
+    town, village, address, link_type, area, future_price, mortgage_amount, net_worth, 
+    mortgage_bank, asset_img, input_time, updator, update_time, valid_status, remark, 
+    flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggasset
+    where asset_id = #{assetId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggasset
+    where asset_id = #{assetId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgAsset" >
+    insert into ggasset (asset_id, user_id, asset_type, 
+      asset_holder, asset_nature, province, 
+      city, county, town, 
+      village, address, link_type, 
+      area, future_price, mortgage_amount, 
+      net_worth, mortgage_bank, asset_img, 
+      input_time, updator, update_time, 
+      valid_status, remark, flag
+      )
+    values (#{assetId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{assetType,jdbcType=VARCHAR}, 
+      #{assetHolder,jdbcType=VARCHAR}, #{assetNature,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR}, 
+      #{village,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkType,jdbcType=VARCHAR}, 
+      #{area,jdbcType=DECIMAL}, #{futurePrice,jdbcType=DECIMAL}, #{mortgageAmount,jdbcType=DECIMAL}, 
+      #{netWorth,jdbcType=DECIMAL}, #{mortgageBank,jdbcType=VARCHAR}, #{assetImg,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{validStatus,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgAsset" >
+    insert into ggasset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assetId != null" >
+        asset_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="assetType != null" >
+        asset_type,
+      </if>
+      <if test="assetHolder != null" >
+        asset_holder,
+      </if>
+      <if test="assetNature != null" >
+        asset_nature,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="town != null" >
+        town,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="linkType != null" >
+        link_type,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="futurePrice != null" >
+        future_price,
+      </if>
+      <if test="mortgageAmount != null" >
+        mortgage_amount,
+      </if>
+      <if test="netWorth != null" >
+        net_worth,
+      </if>
+      <if test="mortgageBank != null" >
+        mortgage_bank,
+      </if>
+      <if test="assetImg != null" >
+        asset_img,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="validStatus != null" >
+        valid_status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assetId != null" >
+        #{assetId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null" >
+        #{assetType,jdbcType=VARCHAR},
+      </if>
+      <if test="assetHolder != null" >
+        #{assetHolder,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNature != null" >
+        #{assetNature,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null" >
+        #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="futurePrice != null" >
+        #{futurePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageAmount != null" >
+        #{mortgageAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="netWorth != null" >
+        #{netWorth,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageBank != null" >
+        #{mortgageBank,jdbcType=VARCHAR},
+      </if>
+      <if test="assetImg != null" >
+        #{assetImg,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgAsset" >
+    update ggasset
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="assetType != null" >
+        asset_type = #{assetType,jdbcType=VARCHAR},
+      </if>
+      <if test="assetHolder != null" >
+        asset_holder = #{assetHolder,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNature != null" >
+        asset_nature = #{assetNature,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        town = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null" >
+        link_type = #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="futurePrice != null" >
+        future_price = #{futurePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageAmount != null" >
+        mortgage_amount = #{mortgageAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="netWorth != null" >
+        net_worth = #{netWorth,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageBank != null" >
+        mortgage_bank = #{mortgageBank,jdbcType=VARCHAR},
+      </if>
+      <if test="assetImg != null" >
+        asset_img = #{assetImg,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validStatus != null" >
+        valid_status = #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where asset_id = #{assetId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgAsset" >
+    update ggasset
+    set user_id = #{userId,jdbcType=VARCHAR},
+      asset_type = #{assetType,jdbcType=VARCHAR},
+      asset_holder = #{assetHolder,jdbcType=VARCHAR},
+      asset_nature = #{assetNature,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      town = #{town,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      link_type = #{linkType,jdbcType=VARCHAR},
+      area = #{area,jdbcType=DECIMAL},
+      future_price = #{futurePrice,jdbcType=DECIMAL},
+      mortgage_amount = #{mortgageAmount,jdbcType=DECIMAL},
+      net_worth = #{netWorth,jdbcType=DECIMAL},
+      mortgage_bank = #{mortgageBank,jdbcType=VARCHAR},
+      asset_img = #{assetImg,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      valid_status = #{validStatus,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where asset_id = #{assetId,jdbcType=VARCHAR}
+  </update>
+</mapper>

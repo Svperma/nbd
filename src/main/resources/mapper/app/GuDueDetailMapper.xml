@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuDueDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuDueDetail" >
+    <id column="due_id" property="dueId" jdbcType="VARCHAR" />
+    <id column="due_type" property="dueType" jdbcType="VARCHAR" />
+    <id column="subject_type" property="subjectType" jdbcType="CHAR" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="credit_time" property="creditTime" jdbcType="TIMESTAMP" />
+    <result column="finish_num" property="finishNum" jdbcType="INTEGER" />
+    <result column="loan_num" property="loanNum" jdbcType="INTEGER" />
+    <result column="loan_amount" property="loanAmount" jdbcType="DECIMAL" />
+    <result column="illegal_amount" property="illegalAmount" jdbcType="DECIMAL" />
+    <result column="overdue_num" property="overdueNum" jdbcType="INTEGER" />
+    <result column="months" property="months" jdbcType="INTEGER" />
+    <result column="max_due_months" property="maxDueMonths" jdbcType="INTEGER" />
+    <result column="max_amount_per_month" property="maxAmountPerMonth" jdbcType="DECIMAL" />
+    <result column="due_code" property="dueCode" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    due_id, due_type, subject_type, id, credit_time, finish_num, loan_num, loan_amount, 
+    illegal_amount, overdue_num, months, max_due_months, max_amount_per_month, due_code, 
+    flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.modules.app.entity.GuDueDetailKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from guduedetail
+    where due_id = #{dueId,jdbcType=VARCHAR}
+      and due_type = #{dueType,jdbcType=VARCHAR}
+      and subject_type = #{subjectType,jdbcType=CHAR}
+      and id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuDueDetailKey" >
+    delete from guduedetail
+    where due_id = #{dueId,jdbcType=VARCHAR}
+      and due_type = #{dueType,jdbcType=VARCHAR}
+      and subject_type = #{subjectType,jdbcType=CHAR}
+      and id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuDueDetail" >
+    insert into guduedetail (due_id, due_type, subject_type, 
+      id, credit_time, finish_num, 
+      loan_num, loan_amount, illegal_amount, 
+      overdue_num, months, max_due_months, 
+      max_amount_per_month, due_code, flag, 
+      remark)
+    values (#{dueId,jdbcType=VARCHAR}, #{dueType,jdbcType=VARCHAR}, #{subjectType,jdbcType=CHAR}, 
+      #{id,jdbcType=VARCHAR}, #{creditTime,jdbcType=TIMESTAMP}, #{finishNum,jdbcType=INTEGER}, 
+      #{loanNum,jdbcType=INTEGER}, #{loanAmount,jdbcType=DECIMAL}, #{illegalAmount,jdbcType=DECIMAL}, 
+      #{overdueNum,jdbcType=INTEGER}, #{months,jdbcType=INTEGER}, #{maxDueMonths,jdbcType=INTEGER}, 
+      #{maxAmountPerMonth,jdbcType=DECIMAL}, #{dueCode,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuDueDetail" >
+    insert into guduedetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dueId != null" >
+        due_id,
+      </if>
+      <if test="dueType != null" >
+        due_type,
+      </if>
+      <if test="subjectType != null" >
+        subject_type,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creditTime != null" >
+        credit_time,
+      </if>
+      <if test="finishNum != null" >
+        finish_num,
+      </if>
+      <if test="loanNum != null" >
+        loan_num,
+      </if>
+      <if test="loanAmount != null" >
+        loan_amount,
+      </if>
+      <if test="illegalAmount != null" >
+        illegal_amount,
+      </if>
+      <if test="overdueNum != null" >
+        overdue_num,
+      </if>
+      <if test="months != null" >
+        months,
+      </if>
+      <if test="maxDueMonths != null" >
+        max_due_months,
+      </if>
+      <if test="maxAmountPerMonth != null" >
+        max_amount_per_month,
+      </if>
+      <if test="dueCode != null" >
+        due_code,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dueId != null" >
+        #{dueId,jdbcType=VARCHAR},
+      </if>
+      <if test="dueType != null" >
+        #{dueType,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null" >
+        #{subjectType,jdbcType=CHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="creditTime != null" >
+        #{creditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishNum != null" >
+        #{finishNum,jdbcType=INTEGER},
+      </if>
+      <if test="loanNum != null" >
+        #{loanNum,jdbcType=INTEGER},
+      </if>
+      <if test="loanAmount != null" >
+        #{loanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="illegalAmount != null" >
+        #{illegalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueNum != null" >
+        #{overdueNum,jdbcType=INTEGER},
+      </if>
+      <if test="months != null" >
+        #{months,jdbcType=INTEGER},
+      </if>
+      <if test="maxDueMonths != null" >
+        #{maxDueMonths,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmountPerMonth != null" >
+        #{maxAmountPerMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCode != null" >
+        #{dueCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuDueDetail" >
+    update guduedetail
+    <set >
+      <if test="creditTime != null" >
+        credit_time = #{creditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishNum != null" >
+        finish_num = #{finishNum,jdbcType=INTEGER},
+      </if>
+      <if test="loanNum != null" >
+        loan_num = #{loanNum,jdbcType=INTEGER},
+      </if>
+      <if test="loanAmount != null" >
+        loan_amount = #{loanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="illegalAmount != null" >
+        illegal_amount = #{illegalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueNum != null" >
+        overdue_num = #{overdueNum,jdbcType=INTEGER},
+      </if>
+      <if test="months != null" >
+        months = #{months,jdbcType=INTEGER},
+      </if>
+      <if test="maxDueMonths != null" >
+        max_due_months = #{maxDueMonths,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmountPerMonth != null" >
+        max_amount_per_month = #{maxAmountPerMonth,jdbcType=DECIMAL},
+      </if>
+      <if test="dueCode != null" >
+        due_code = #{dueCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where due_id = #{dueId,jdbcType=VARCHAR}
+      and due_type = #{dueType,jdbcType=VARCHAR}
+      and subject_type = #{subjectType,jdbcType=CHAR}
+      and id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuDueDetail" >
+    update guduedetail
+    set credit_time = #{creditTime,jdbcType=TIMESTAMP},
+      finish_num = #{finishNum,jdbcType=INTEGER},
+      loan_num = #{loanNum,jdbcType=INTEGER},
+      loan_amount = #{loanAmount,jdbcType=DECIMAL},
+      illegal_amount = #{illegalAmount,jdbcType=DECIMAL},
+      overdue_num = #{overdueNum,jdbcType=INTEGER},
+      months = #{months,jdbcType=INTEGER},
+      max_due_months = #{maxDueMonths,jdbcType=INTEGER},
+      max_amount_per_month = #{maxAmountPerMonth,jdbcType=DECIMAL},
+      due_code = #{dueCode,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where due_id = #{dueId,jdbcType=VARCHAR}
+      and due_type = #{dueType,jdbcType=VARCHAR}
+      and subject_type = #{subjectType,jdbcType=CHAR}
+      and id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

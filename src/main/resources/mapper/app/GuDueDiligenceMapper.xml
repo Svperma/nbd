@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuDueDiligenceMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuDueDiligence" >
+    <id column="due_id" property="dueId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="due_code" property="dueCode" jdbcType="VARCHAR" />
+    <result column="due_type" property="dueType" jdbcType="VARCHAR" />
+    <result column="due_report" property="dueReport" jdbcType="VARCHAR" />
+    <result column="credit_time" property="creditTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="contract_id" property="contractId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    due_id, user_id, due_code, due_type, due_report, credit_time, remark, flag, contract_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from guduediligence
+    where due_id = #{dueId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from guduediligence
+    where due_id = #{dueId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuDueDiligence" >
+    insert into guduediligence (due_id, user_id, due_code, 
+      due_type, due_report, credit_time, 
+      remark, flag, contract_id
+      )
+    values (#{dueId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{dueCode,jdbcType=VARCHAR}, 
+      #{dueType,jdbcType=VARCHAR}, #{dueReport,jdbcType=VARCHAR}, #{creditTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{contractId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuDueDiligence" >
+    insert into guduediligence
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dueId != null" >
+        due_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="dueCode != null" >
+        due_code,
+      </if>
+      <if test="dueType != null" >
+        due_type,
+      </if>
+      <if test="dueReport != null" >
+        due_report,
+      </if>
+      <if test="creditTime != null" >
+        credit_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dueId != null" >
+        #{dueId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="dueCode != null" >
+        #{dueCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dueType != null" >
+        #{dueType,jdbcType=VARCHAR},
+      </if>
+      <if test="dueReport != null" >
+        #{dueReport,jdbcType=VARCHAR},
+      </if>
+      <if test="creditTime != null" >
+        #{creditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null" >
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuDueDiligence" >
+    update guduediligence
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="dueCode != null" >
+        due_code = #{dueCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dueType != null" >
+        due_type = #{dueType,jdbcType=VARCHAR},
+      </if>
+      <if test="dueReport != null" >
+        due_report = #{dueReport,jdbcType=VARCHAR},
+      </if>
+      <if test="creditTime != null" >
+        credit_time = #{creditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null" >
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where due_id = #{dueId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuDueDiligence" >
+    update guduediligence
+    set user_id = #{userId,jdbcType=VARCHAR},
+      due_code = #{dueCode,jdbcType=VARCHAR},
+      due_type = #{dueType,jdbcType=VARCHAR},
+      due_report = #{dueReport,jdbcType=VARCHAR},
+      credit_time = #{creditTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      contract_id = #{contractId,jdbcType=VARCHAR}
+    where due_id = #{dueId,jdbcType=VARCHAR}
+  </update>
+</mapper>

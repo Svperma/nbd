@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgProductDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgProductDetail" >
+    <id column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="loan_amount" property="loanAmount" jdbcType="VARCHAR" />
+    <result column="loan_arrange" property="loanArrange" jdbcType="VARCHAR" />
+    <result column="rate" property="rate" jdbcType="DECIMAL" />
+    <result column="pay_type" property="payType" jdbcType="VARCHAR" />
+    <result column="product_img" property="productImg" jdbcType="VARCHAR" />
+    <result column="product_des" property="productDes" jdbcType="VARCHAR" />
+    <result column="product_introduce" property="productIntroduce" jdbcType="VARCHAR" />
+    <result column="infomation" property="infomation" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    product_id, loan_amount, loan_arrange, rate, pay_type, product_img, product_des, 
+    product_introduce, infomation, flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggproductdetail
+    where product_id = #{productId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggproductdetail
+    where product_id = #{productId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgProductDetail" >
+    insert into ggproductdetail (product_id, loan_amount, loan_arrange, 
+      rate, pay_type, product_img, 
+      product_des, product_introduce, infomation, 
+      flag, remark)
+    values (#{productId,jdbcType=VARCHAR}, #{loanAmount,jdbcType=VARCHAR}, #{loanArrange,jdbcType=VARCHAR}, 
+      #{rate,jdbcType=DECIMAL}, #{payType,jdbcType=VARCHAR}, #{productImg,jdbcType=VARCHAR}, 
+      #{productDes,jdbcType=VARCHAR}, #{productIntroduce,jdbcType=VARCHAR}, #{infomation,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgProductDetail" >
+    insert into ggproductdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="loanAmount != null" >
+        loan_amount,
+      </if>
+      <if test="loanArrange != null" >
+        loan_arrange,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="productImg != null" >
+        product_img,
+      </if>
+      <if test="productDes != null" >
+        product_des,
+      </if>
+      <if test="productIntroduce != null" >
+        product_introduce,
+      </if>
+      <if test="infomation != null" >
+        infomation,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="loanAmount != null" >
+        #{loanAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="loanArrange != null" >
+        #{loanArrange,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null" >
+        #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productDes != null" >
+        #{productDes,jdbcType=VARCHAR},
+      </if>
+      <if test="productIntroduce != null" >
+        #{productIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="infomation != null" >
+        #{infomation,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgProductDetail" >
+    update ggproductdetail
+    <set >
+      <if test="loanAmount != null" >
+        loan_amount = #{loanAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="loanArrange != null" >
+        loan_arrange = #{loanArrange,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="productImg != null" >
+        product_img = #{productImg,jdbcType=VARCHAR},
+      </if>
+      <if test="productDes != null" >
+        product_des = #{productDes,jdbcType=VARCHAR},
+      </if>
+      <if test="productIntroduce != null" >
+        product_introduce = #{productIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="infomation != null" >
+        infomation = #{infomation,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgProductDetail" >
+    update ggproductdetail
+    set loan_amount = #{loanAmount,jdbcType=VARCHAR},
+      loan_arrange = #{loanArrange,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DECIMAL},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      product_img = #{productImg,jdbcType=VARCHAR},
+      product_des = #{productDes,jdbcType=VARCHAR},
+      product_introduce = #{productIntroduce,jdbcType=VARCHAR},
+      infomation = #{infomation,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgRoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgRoleMenu" >
+    <id column="role_code" property="roleCode" jdbcType="VARCHAR" />
+    <id column="resource_id" property="resourceId" jdbcType="VARCHAR" />
+    <result column="create_code" property="createCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="valid_status" property="validStatus" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_code, resource_id, create_code, create_time, updator, update_time, valid_status, 
+    flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.modules.app.entity.GgRoleMenuKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggrolemenu
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+      and resource_id = #{resourceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgRoleMenuKey" >
+    delete from ggrolemenu
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+      and resource_id = #{resourceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgRoleMenu" >
+    insert into ggrolemenu (role_code, resource_id, create_code, 
+      create_time, updator, update_time, 
+      valid_status, flag, remark
+      )
+    values (#{roleCode,jdbcType=VARCHAR}, #{resourceId,jdbcType=VARCHAR}, #{createCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{validStatus,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgRoleMenu" >
+    insert into ggrolemenu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleCode != null" >
+        role_code,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="createCode != null" >
+        create_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="validStatus != null" >
+        valid_status,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="createCode != null" >
+        #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgRoleMenu" >
+    update ggrolemenu
+    <set >
+      <if test="createCode != null" >
+        create_code = #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validStatus != null" >
+        valid_status = #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+      and resource_id = #{resourceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgRoleMenu" >
+    update ggrolemenu
+    set create_code = #{createCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      valid_status = #{validStatus,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+      and resource_id = #{resourceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

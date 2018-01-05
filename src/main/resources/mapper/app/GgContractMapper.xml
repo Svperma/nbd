@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgContractMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgContract" >
+    <id column="contract_id" property="contractId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="contract_type" property="contractType" jdbcType="VARCHAR" />
+    <result column="partner_id" property="partnerId" jdbcType="VARCHAR" />
+    <result column="link_man" property="linkMan" jdbcType="VARCHAR" />
+    <result column="link_type" property="linkType" jdbcType="VARCHAR" />
+    <result column="contract_amount" property="contractAmount" jdbcType="DECIMAL" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="contract_img" property="contractImg" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="valid_status" property="validStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    contract_id, user_id, contract_type, partner_id, link_man, link_type, contract_amount, 
+    start_date, end_date, contract_img, input_time, updator, update_time, remark, flag, 
+    valid_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggcontract
+    where contract_id = #{contractId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggcontract
+    where contract_id = #{contractId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgContract" >
+    insert into ggcontract (contract_id, user_id, contract_type, 
+      partner_id, link_man, link_type, 
+      contract_amount, start_date, end_date, 
+      contract_img, input_time, updator, 
+      update_time, remark, flag, 
+      valid_status)
+    values (#{contractId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{contractType,jdbcType=VARCHAR}, 
+      #{partnerId,jdbcType=VARCHAR}, #{linkMan,jdbcType=VARCHAR}, #{linkType,jdbcType=VARCHAR}, 
+      #{contractAmount,jdbcType=DECIMAL}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{contractImg,jdbcType=VARCHAR}, #{inputTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, 
+      #{validStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgContract" >
+    insert into ggcontract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="contractType != null" >
+        contract_type,
+      </if>
+      <if test="partnerId != null" >
+        partner_id,
+      </if>
+      <if test="linkMan != null" >
+        link_man,
+      </if>
+      <if test="linkType != null" >
+        link_type,
+      </if>
+      <if test="contractAmount != null" >
+        contract_amount,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="contractImg != null" >
+        contract_img,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="validStatus != null" >
+        valid_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contractId != null" >
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null" >
+        #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null" >
+        #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null" >
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null" >
+        #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null" >
+        #{contractAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="contractImg != null" >
+        #{contractImg,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgContract" >
+    update ggcontract
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null" >
+        contract_type = #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null" >
+        partner_id = #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null" >
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null" >
+        link_type = #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null" >
+        contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="contractImg != null" >
+        contract_img = #{contractImg,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null" >
+        valid_status = #{validStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contract_id = #{contractId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgContract" >
+    update ggcontract
+    set user_id = #{userId,jdbcType=VARCHAR},
+      contract_type = #{contractType,jdbcType=VARCHAR},
+      partner_id = #{partnerId,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      link_type = #{linkType,jdbcType=VARCHAR},
+      contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      contract_img = #{contractImg,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      valid_status = #{validStatus,jdbcType=VARCHAR}
+    where contract_id = #{contractId,jdbcType=VARCHAR}
+  </update>
+</mapper>

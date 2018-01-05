@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgUserCorpMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgUserCorp" >
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="corp_name" property="corpName" jdbcType="VARCHAR" />
+    <result column="register_type" property="registerType" jdbcType="VARCHAR" />
+    <result column="uniform_code" property="uniformCode" jdbcType="VARCHAR" />
+    <result column="establish_date" property="establishDate" jdbcType="TIMESTAMP" />
+    <result column="register_assets" property="registerAssets" jdbcType="DECIMAL" />
+    <result column="legal_representative" property="legalRepresentative" jdbcType="VARCHAR" />
+    <result column="identity_no" property="identityNo" jdbcType="VARCHAR" />
+    <result column="business_license_img" property="businessLicenseImg" jdbcType="VARCHAR" />
+    <result column="license_expire_date" property="licenseExpireDate" jdbcType="TIMESTAMP" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="town" property="town" jdbcType="VARCHAR" />
+    <result column="village" property="village" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="main_business" property="mainBusiness" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, corp_name, register_type, uniform_code, establish_date, register_assets, 
+    legal_representative, identity_no, business_license_img, license_expire_date, province, 
+    city, county, town, village, address, main_business, input_time, updator, update_time, 
+    flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggusercorp
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggusercorp
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgUserCorp" >
+    insert into ggusercorp (user_id, corp_name, register_type, 
+      uniform_code, establish_date, register_assets, 
+      legal_representative, identity_no, business_license_img, 
+      license_expire_date, province, city, 
+      county, town, village, 
+      address, main_business, input_time, 
+      updator, update_time, flag, 
+      remark)
+    values (#{userId,jdbcType=VARCHAR}, #{corpName,jdbcType=VARCHAR}, #{registerType,jdbcType=VARCHAR}, 
+      #{uniformCode,jdbcType=VARCHAR}, #{establishDate,jdbcType=TIMESTAMP}, #{registerAssets,jdbcType=DECIMAL}, 
+      #{legalRepresentative,jdbcType=VARCHAR}, #{identityNo,jdbcType=VARCHAR}, #{businessLicenseImg,jdbcType=VARCHAR}, 
+      #{licenseExpireDate,jdbcType=TIMESTAMP}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{mainBusiness,jdbcType=VARCHAR}, #{inputTime,jdbcType=TIMESTAMP}, 
+      #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{flag,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgUserCorp" >
+    insert into ggusercorp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="corpName != null" >
+        corp_name,
+      </if>
+      <if test="registerType != null" >
+        register_type,
+      </if>
+      <if test="uniformCode != null" >
+        uniform_code,
+      </if>
+      <if test="establishDate != null" >
+        establish_date,
+      </if>
+      <if test="registerAssets != null" >
+        register_assets,
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative,
+      </if>
+      <if test="identityNo != null" >
+        identity_no,
+      </if>
+      <if test="businessLicenseImg != null" >
+        business_license_img,
+      </if>
+      <if test="licenseExpireDate != null" >
+        license_expire_date,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="town != null" >
+        town,
+      </if>
+      <if test="village != null" >
+        village,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="mainBusiness != null" >
+        main_business,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="corpName != null" >
+        #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null" >
+        #{registerType,jdbcType=VARCHAR},
+      </if>
+      <if test="uniformCode != null" >
+        #{uniformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null" >
+        #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerAssets != null" >
+        #{registerAssets,jdbcType=DECIMAL},
+      </if>
+      <if test="legalRepresentative != null" >
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseImg != null" >
+        #{businessLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseExpireDate != null" >
+        #{licenseExpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mainBusiness != null" >
+        #{mainBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgUserCorp" >
+    update ggusercorp
+    <set >
+      <if test="corpName != null" >
+        corp_name = #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="registerType != null" >
+        register_type = #{registerType,jdbcType=VARCHAR},
+      </if>
+      <if test="uniformCode != null" >
+        uniform_code = #{uniformCode,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null" >
+        establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registerAssets != null" >
+        register_assets = #{registerAssets,jdbcType=DECIMAL},
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        identity_no = #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseImg != null" >
+        business_license_img = #{businessLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseExpireDate != null" >
+        license_expire_date = #{licenseExpireDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        town = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null" >
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mainBusiness != null" >
+        main_business = #{mainBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgUserCorp" >
+    update ggusercorp
+    set corp_name = #{corpName,jdbcType=VARCHAR},
+      register_type = #{registerType,jdbcType=VARCHAR},
+      uniform_code = #{uniformCode,jdbcType=VARCHAR},
+      establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      register_assets = #{registerAssets,jdbcType=DECIMAL},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      identity_no = #{identityNo,jdbcType=VARCHAR},
+      business_license_img = #{businessLicenseImg,jdbcType=VARCHAR},
+      license_expire_date = #{licenseExpireDate,jdbcType=TIMESTAMP},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      town = #{town,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      main_business = #{mainBusiness,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuPolicyMateMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuPolicyMate" >
+    <id column="business_no" property="businessNo" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="identity_no" property="identityNo" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="business_class_code" property="businessClassCode" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    business_no, name, identity_no, mobile, company_name, business_class_code, flag, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from gupolicymate
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from gupolicymate
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuPolicyMate" >
+    insert into gupolicymate (business_no, name, identity_no, 
+      mobile, company_name, business_class_code, 
+      flag, remark)
+    values (#{businessNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{identityNo,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{businessClassCode,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuPolicyMate" >
+    insert into gupolicymate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        business_no,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="identityNo != null" >
+        identity_no,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="businessClassCode != null" >
+        business_class_code,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClassCode != null" >
+        #{businessClassCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuPolicyMate" >
+    update gupolicymate
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null" >
+        identity_no = #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClassCode != null" >
+        business_class_code = #{businessClassCode,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuPolicyMate" >
+    update gupolicymate
+    set name = #{name,jdbcType=VARCHAR},
+      identity_no = #{identityNo,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      business_class_code = #{businessClassCode,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where business_no = #{businessNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

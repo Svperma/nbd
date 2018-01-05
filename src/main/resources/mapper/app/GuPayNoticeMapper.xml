@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuPayNoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuPayNotice" >
+    <id column="apply_id" property="applyId" jdbcType="VARCHAR" />
+    <id column="notifier_type" property="notifierType" jdbcType="VARCHAR" />
+    <result column="benoticed" property="benoticed" jdbcType="VARCHAR" />
+    <result column="notifier" property="notifier" jdbcType="VARCHAR" />
+    <result column="pay_img" property="payImg" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    apply_id, notifier_type, benoticed, notifier, pay_img, create_time, flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.modules.app.entity.GuPayNoticeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from gupaynotice
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+      and notifier_type = #{notifierType,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuPayNoticeKey" >
+    delete from gupaynotice
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+      and notifier_type = #{notifierType,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuPayNotice" >
+    insert into gupaynotice (apply_id, notifier_type, benoticed, 
+      notifier, pay_img, create_time, 
+      flag, remark)
+    values (#{applyId,jdbcType=VARCHAR}, #{notifierType,jdbcType=VARCHAR}, #{benoticed,jdbcType=VARCHAR}, 
+      #{notifier,jdbcType=VARCHAR}, #{payImg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuPayNotice" >
+    insert into gupaynotice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="notifierType != null" >
+        notifier_type,
+      </if>
+      <if test="benoticed != null" >
+        benoticed,
+      </if>
+      <if test="notifier != null" >
+        notifier,
+      </if>
+      <if test="payImg != null" >
+        pay_img,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="notifierType != null" >
+        #{notifierType,jdbcType=VARCHAR},
+      </if>
+      <if test="benoticed != null" >
+        #{benoticed,jdbcType=VARCHAR},
+      </if>
+      <if test="notifier != null" >
+        #{notifier,jdbcType=VARCHAR},
+      </if>
+      <if test="payImg != null" >
+        #{payImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuPayNotice" >
+    update gupaynotice
+    <set >
+      <if test="benoticed != null" >
+        benoticed = #{benoticed,jdbcType=VARCHAR},
+      </if>
+      <if test="notifier != null" >
+        notifier = #{notifier,jdbcType=VARCHAR},
+      </if>
+      <if test="payImg != null" >
+        pay_img = #{payImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+      and notifier_type = #{notifierType,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuPayNotice" >
+    update gupaynotice
+    set benoticed = #{benoticed,jdbcType=VARCHAR},
+      notifier = #{notifier,jdbcType=VARCHAR},
+      pay_img = #{payImg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+      and notifier_type = #{notifierType,jdbcType=VARCHAR}
+  </update>
+</mapper>

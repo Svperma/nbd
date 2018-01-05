@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuAssuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuAssurance" >
+    <id column="assure_id" property="assureId" jdbcType="VARCHAR" />
+    <result column="assure_contract_no" property="assureContractNo" jdbcType="VARCHAR" />
+    <result column="assure_company" property="assureCompany" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="VARCHAR" />
+    <result column="assure_amount" property="assureAmount" jdbcType="DECIMAL" />
+    <result column="assure_premium" property="assurePremium" jdbcType="DECIMAL" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="letter_id" property="letterId" jdbcType="VARCHAR" />
+    <result column="loan_contract_no" property="loanContractNo" jdbcType="VARCHAR" />
+    <result column="finance_amount" property="financeAmount" jdbcType="DECIMAL" />
+    <result column="finance_arrange" property="financeArrange" jdbcType="VARCHAR" />
+    <result column="finance_bank" property="financeBank" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="record_address" property="recordAddress" jdbcType="VARCHAR" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    assure_id, assure_contract_no, assure_company, user_id, product_id, assure_amount, 
+    assure_premium, start_date, end_date, status, letter_id, loan_contract_no, finance_amount, 
+    finance_arrange, finance_bank, input_time, record_address, updator, update_time, 
+    remark, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from guassurance
+    where assure_id = #{assureId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from guassurance
+    where assure_id = #{assureId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuAssurance" >
+    insert into guassurance (assure_id, assure_contract_no, assure_company, 
+      user_id, product_id, assure_amount, 
+      assure_premium, start_date, end_date, 
+      status, letter_id, loan_contract_no, 
+      finance_amount, finance_arrange, finance_bank, 
+      input_time, record_address, updator, 
+      update_time, remark, flag
+      )
+    values (#{assureId,jdbcType=VARCHAR}, #{assureContractNo,jdbcType=VARCHAR}, #{assureCompany,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{assureAmount,jdbcType=DECIMAL}, 
+      #{assurePremium,jdbcType=DECIMAL}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{status,jdbcType=VARCHAR}, #{letterId,jdbcType=VARCHAR}, #{loanContractNo,jdbcType=VARCHAR}, 
+      #{financeAmount,jdbcType=DECIMAL}, #{financeArrange,jdbcType=VARCHAR}, #{financeBank,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=TIMESTAMP}, #{recordAddress,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuAssurance" >
+    insert into guassurance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assureId != null" >
+        assure_id,
+      </if>
+      <if test="assureContractNo != null" >
+        assure_contract_no,
+      </if>
+      <if test="assureCompany != null" >
+        assure_company,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="assureAmount != null" >
+        assure_amount,
+      </if>
+      <if test="assurePremium != null" >
+        assure_premium,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="letterId != null" >
+        letter_id,
+      </if>
+      <if test="loanContractNo != null" >
+        loan_contract_no,
+      </if>
+      <if test="financeAmount != null" >
+        finance_amount,
+      </if>
+      <if test="financeArrange != null" >
+        finance_arrange,
+      </if>
+      <if test="financeBank != null" >
+        finance_bank,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="recordAddress != null" >
+        record_address,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assureId != null" >
+        #{assureId,jdbcType=VARCHAR},
+      </if>
+      <if test="assureContractNo != null" >
+        #{assureContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="assureCompany != null" >
+        #{assureCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="assureAmount != null" >
+        #{assureAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="assurePremium != null" >
+        #{assurePremium,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="letterId != null" >
+        #{letterId,jdbcType=VARCHAR},
+      </if>
+      <if test="loanContractNo != null" >
+        #{loanContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeAmount != null" >
+        #{financeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financeArrange != null" >
+        #{financeArrange,jdbcType=VARCHAR},
+      </if>
+      <if test="financeBank != null" >
+        #{financeBank,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordAddress != null" >
+        #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuAssurance" >
+    update guassurance
+    <set >
+      <if test="assureContractNo != null" >
+        assure_contract_no = #{assureContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="assureCompany != null" >
+        assure_company = #{assureCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="assureAmount != null" >
+        assure_amount = #{assureAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="assurePremium != null" >
+        assure_premium = #{assurePremium,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="letterId != null" >
+        letter_id = #{letterId,jdbcType=VARCHAR},
+      </if>
+      <if test="loanContractNo != null" >
+        loan_contract_no = #{loanContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeAmount != null" >
+        finance_amount = #{financeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financeArrange != null" >
+        finance_arrange = #{financeArrange,jdbcType=VARCHAR},
+      </if>
+      <if test="financeBank != null" >
+        finance_bank = #{financeBank,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordAddress != null" >
+        record_address = #{recordAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where assure_id = #{assureId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuAssurance" >
+    update guassurance
+    set assure_contract_no = #{assureContractNo,jdbcType=VARCHAR},
+      assure_company = #{assureCompany,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=VARCHAR},
+      assure_amount = #{assureAmount,jdbcType=DECIMAL},
+      assure_premium = #{assurePremium,jdbcType=DECIMAL},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      status = #{status,jdbcType=VARCHAR},
+      letter_id = #{letterId,jdbcType=VARCHAR},
+      loan_contract_no = #{loanContractNo,jdbcType=VARCHAR},
+      finance_amount = #{financeAmount,jdbcType=DECIMAL},
+      finance_arrange = #{financeArrange,jdbcType=VARCHAR},
+      finance_bank = #{financeBank,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      record_address = #{recordAddress,jdbcType=VARCHAR},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where assure_id = #{assureId,jdbcType=VARCHAR}
+  </update>
+</mapper>

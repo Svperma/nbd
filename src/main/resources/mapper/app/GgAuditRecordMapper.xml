@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgAuditRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgAuditRecord" >
+    <id column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <id column="series_no" property="seriesNo" jdbcType="INTEGER" />
+    <result column="audit_code" property="auditCode" jdbcType="VARCHAR" />
+    <result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    audit_id, series_no, audit_code, audit_status, content, audit_time, flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.dsib.modules.app.entity.GgAuditRecordKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggauditrecord
+    where audit_id = #{auditId,jdbcType=VARCHAR}
+      and series_no = #{seriesNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgAuditRecordKey" >
+    delete from ggauditrecord
+    where audit_id = #{auditId,jdbcType=VARCHAR}
+      and series_no = #{seriesNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgAuditRecord" >
+    insert into ggauditrecord (audit_id, series_no, audit_code, 
+      audit_status, content, audit_time, 
+      flag, remark)
+    values (#{auditId,jdbcType=VARCHAR}, #{seriesNo,jdbcType=INTEGER}, #{auditCode,jdbcType=VARCHAR}, 
+      #{auditStatus,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}, 
+      #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgAuditRecord" >
+    insert into ggauditrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auditId != null" >
+        audit_id,
+      </if>
+      <if test="seriesNo != null" >
+        series_no,
+      </if>
+      <if test="auditCode != null" >
+        audit_code,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auditId != null" >
+        #{auditId,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesNo != null" >
+        #{seriesNo,jdbcType=INTEGER},
+      </if>
+      <if test="auditCode != null" >
+        #{auditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgAuditRecord" >
+    update ggauditrecord
+    <set >
+      <if test="auditCode != null" >
+        audit_code = #{auditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where audit_id = #{auditId,jdbcType=VARCHAR}
+      and series_no = #{seriesNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgAuditRecord" >
+    update ggauditrecord
+    set audit_code = #{auditCode,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where audit_id = #{auditId,jdbcType=VARCHAR}
+      and series_no = #{seriesNo,jdbcType=INTEGER}
+  </update>
+</mapper>

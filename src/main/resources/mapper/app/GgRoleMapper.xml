@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GgRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GgRole" >
+    <id column="role_code" property="roleCode" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="valid_status" property="validStatus" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="role_type" property="roleType" jdbcType="VARCHAR" />
+    <result column="Column_10" property="column10" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_code, role_name, valid_status, input_time, updator, update_time, remark, flag, 
+    role_type, Column_10
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ggrole
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ggrole
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GgRole" >
+    insert into ggrole (role_code, role_name, valid_status, 
+      input_time, updator, update_time, 
+      remark, flag, role_type, 
+      Column_10)
+    values (#{roleCode,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{validStatus,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, 
+      #{column10,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GgRole" >
+    insert into ggrole
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleCode != null" >
+        role_code,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="validStatus != null" >
+        valid_status,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="roleType != null" >
+        role_type,
+      </if>
+      <if test="column10 != null" >
+        Column_10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="column10 != null" >
+        #{column10,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GgRole" >
+    update ggrole
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="validStatus != null" >
+        valid_status = #{validStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        role_type = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="column10 != null" >
+        Column_10 = #{column10,jdbcType=CHAR},
+      </if>
+    </set>
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GgRole" >
+    update ggrole
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      valid_status = #{validStatus,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      role_type = #{roleType,jdbcType=VARCHAR},
+      Column_10 = #{column10,jdbcType=CHAR}
+    where role_code = #{roleCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuApplyMoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuApplyMoney" >
+    <id column="apply_id" property="applyId" jdbcType="VARCHAR" />
+    <result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
+    <result column="accept_name" property="acceptName" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="bank_status" property="bankStatus" jdbcType="VARCHAR" />
+    <result column="gov_status" property="govStatus" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    apply_id, contract_no, accept_name, bank, account_no, amount, user_id, bank_status, 
+    gov_status, input_time, updator, update_time, remark, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from guapplymoney
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from guapplymoney
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuApplyMoney" >
+    insert into guapplymoney (apply_id, contract_no, accept_name, 
+      bank, account_no, amount, 
+      user_id, bank_status, gov_status, 
+      input_time, updator, update_time, 
+      remark, flag)
+    values (#{applyId,jdbcType=VARCHAR}, #{contractNo,jdbcType=VARCHAR}, #{acceptName,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{userId,jdbcType=VARCHAR}, #{bankStatus,jdbcType=VARCHAR}, #{govStatus,jdbcType=VARCHAR}, 
+      #{inputTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuApplyMoney" >
+    insert into guapplymoney
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="contractNo != null" >
+        contract_no,
+      </if>
+      <if test="acceptName != null" >
+        accept_name,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="accountNo != null" >
+        account_no,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="bankStatus != null" >
+        bank_status,
+      </if>
+      <if test="govStatus != null" >
+        gov_status,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyId != null" >
+        #{applyId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null" >
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptName != null" >
+        #{acceptName,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankStatus != null" >
+        #{bankStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="govStatus != null" >
+        #{govStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuApplyMoney" >
+    update guapplymoney
+    <set >
+      <if test="contractNo != null" >
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptName != null" >
+        accept_name = #{acceptName,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        account_no = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankStatus != null" >
+        bank_status = #{bankStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="govStatus != null" >
+        gov_status = #{govStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuApplyMoney" >
+    update guapplymoney
+    set contract_no = #{contractNo,jdbcType=VARCHAR},
+      accept_name = #{acceptName,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=VARCHAR},
+      bank_status = #{bankStatus,jdbcType=VARCHAR},
+      gov_status = #{govStatus,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where apply_id = #{applyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

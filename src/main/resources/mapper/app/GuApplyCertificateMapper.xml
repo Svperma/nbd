@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsib.modules.app.dao.GuApplyCertificateMapper" >
+  <resultMap id="BaseResultMap" type="com.dsib.modules.app.entity.GuApplyCertificate" >
+    <id column="cert_id" property="certId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="last_month_asset" property="lastMonthAsset" jdbcType="DECIMAL" />
+    <result column="last_month_debt" property="lastMonthDebt" jdbcType="DECIMAL" />
+    <result column="last_year_income" property="lastYearIncome" jdbcType="DECIMAL" />
+    <result column="last_year_revenue" property="lastYearRevenue" jdbcType="DECIMAL" />
+    <result column="last_year_profit" property="lastYearProfit" jdbcType="DECIMAL" />
+    <result column="credit_level" property="creditLevel" jdbcType="VARCHAR" />
+    <result column="loan_info" property="loanInfo" jdbcType="VARCHAR" />
+    <result column="cert_status" property="certStatus" jdbcType="VARCHAR" />
+    <result column="input_time" property="inputTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cert_id, user_id, last_month_asset, last_month_debt, last_year_income, last_year_revenue, 
+    last_year_profit, credit_level, loan_info, cert_status, input_time, updator, update_time, 
+    flag, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from guapplycertificate
+    where cert_id = #{certId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from guapplycertificate
+    where cert_id = #{certId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsib.modules.app.entity.GuApplyCertificate" >
+    insert into guapplycertificate (cert_id, user_id, last_month_asset, 
+      last_month_debt, last_year_income, last_year_revenue, 
+      last_year_profit, credit_level, loan_info, 
+      cert_status, input_time, updator, 
+      update_time, flag, remark
+      )
+    values (#{certId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{lastMonthAsset,jdbcType=DECIMAL}, 
+      #{lastMonthDebt,jdbcType=DECIMAL}, #{lastYearIncome,jdbcType=DECIMAL}, #{lastYearRevenue,jdbcType=DECIMAL}, 
+      #{lastYearProfit,jdbcType=DECIMAL}, #{creditLevel,jdbcType=VARCHAR}, #{loanInfo,jdbcType=VARCHAR}, 
+      #{certStatus,jdbcType=VARCHAR}, #{inputTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{flag,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsib.modules.app.entity.GuApplyCertificate" >
+    insert into guapplycertificate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="certId != null" >
+        cert_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="lastMonthAsset != null" >
+        last_month_asset,
+      </if>
+      <if test="lastMonthDebt != null" >
+        last_month_debt,
+      </if>
+      <if test="lastYearIncome != null" >
+        last_year_income,
+      </if>
+      <if test="lastYearRevenue != null" >
+        last_year_revenue,
+      </if>
+      <if test="lastYearProfit != null" >
+        last_year_profit,
+      </if>
+      <if test="creditLevel != null" >
+        credit_level,
+      </if>
+      <if test="loanInfo != null" >
+        loan_info,
+      </if>
+      <if test="certStatus != null" >
+        cert_status,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="certId != null" >
+        #{certId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastMonthAsset != null" >
+        #{lastMonthAsset,jdbcType=DECIMAL},
+      </if>
+      <if test="lastMonthDebt != null" >
+        #{lastMonthDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearIncome != null" >
+        #{lastYearIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearRevenue != null" >
+        #{lastYearRevenue,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearProfit != null" >
+        #{lastYearProfit,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLevel != null" >
+        #{creditLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="loanInfo != null" >
+        #{loanInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="certStatus != null" >
+        #{certStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsib.modules.app.entity.GuApplyCertificate" >
+    update guapplycertificate
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastMonthAsset != null" >
+        last_month_asset = #{lastMonthAsset,jdbcType=DECIMAL},
+      </if>
+      <if test="lastMonthDebt != null" >
+        last_month_debt = #{lastMonthDebt,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearIncome != null" >
+        last_year_income = #{lastYearIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearRevenue != null" >
+        last_year_revenue = #{lastYearRevenue,jdbcType=DECIMAL},
+      </if>
+      <if test="lastYearProfit != null" >
+        last_year_profit = #{lastYearProfit,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLevel != null" >
+        credit_level = #{creditLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="loanInfo != null" >
+        loan_info = #{loanInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="certStatus != null" >
+        cert_status = #{certStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cert_id = #{certId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsib.modules.app.entity.GuApplyCertificate" >
+    update guapplycertificate
+    set user_id = #{userId,jdbcType=VARCHAR},
+      last_month_asset = #{lastMonthAsset,jdbcType=DECIMAL},
+      last_month_debt = #{lastMonthDebt,jdbcType=DECIMAL},
+      last_year_income = #{lastYearIncome,jdbcType=DECIMAL},
+      last_year_revenue = #{lastYearRevenue,jdbcType=DECIMAL},
+      last_year_profit = #{lastYearProfit,jdbcType=DECIMAL},
+      credit_level = #{creditLevel,jdbcType=VARCHAR},
+      loan_info = #{loanInfo,jdbcType=VARCHAR},
+      cert_status = #{certStatus,jdbcType=VARCHAR},
+      input_time = #{inputTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      flag = #{flag,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where cert_id = #{certId,jdbcType=VARCHAR}
+  </update>
+</mapper>
